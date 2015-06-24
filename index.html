@@ -1,11 +1,12 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css" />
-    <script src="node_modules/angular/angular.min.js"></script>
-
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css"/>
+    <link rel="stylesheet" href="node_modules/purecss/build/pure-min.css">
+    <link rel="stylesheet" href="build/style.min.css">
+    <script src="build/app.js"></script>
 </head>
-<body>
-
+<body ng-app="mainApp" ng-controller="MainTablePlan">
+<div ng-include="'./build/template.html'"></div>
 </body>
 </html>
