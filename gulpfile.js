@@ -58,7 +58,8 @@ gulp.task('watch', function () {
     gulp.watch('app/css/*/*.css', ['css']);
 
     gulp.watch('app/html/*.html', ['html']);
-    gulp.watch('app/html/html-file-array.js', ['html']);
+    gulp.watch('app/html/*/*.html', ['html']);
+    gulp.watch('app/html/_html-files-array.js', ['html']);
 
 });
 
@@ -68,4 +69,4 @@ gulp.task('webserver', function () {
     });
 });
 
-gulp.task('serve', ['webserver', 'watch']);
+gulp.task('serve', ['default', 'webserver', 'watch']);
