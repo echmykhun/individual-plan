@@ -1,0 +1,15 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-minify-css": "^1.1.6"
+  },
+  "dependencies": {
+    "angular": "^1.4.1",
+    "normalize.css": "^3.0.3",
+    "purecss": "^0.6.0"
+  }
+}
