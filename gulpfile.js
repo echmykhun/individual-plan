@@ -5,13 +5,14 @@ var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var minifyCss = require('gulp-minify-css');
 var concatCss = require('gulp-concat-css');
-var minifyHTML = require('gulp-minify-html');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
+var addStream = require('add-stream');
 
-var htmlFilesArray = require('./app/html/_html-files-array');
+var angularTemplateCache = require('gulp-angular-templatecache');
 
-gulp.task('default', ['js', 'css', 'html']);
+
+gulp.task('default', ['js', 'css']);
 gulp.task('js', function () {
     //Single entry point to browserify
     gulp.src('app/js/app.js')
@@ -19,22 +20,17 @@ gulp.task('js', function () {
             insertGlobals: true,
             debug: true
         }))
+        .pipe(addStream.obj(prepareTemplates()))
+        .pipe(concat('app.js'))
         .pipe(gulp.dest('./build'))
         .pipe(connect.reload());
 });
 
-gulp.task('html', function () {
-    var opts = {
-        conditionals: true,
-        spare: true
-    };
-
-    return gulp.src(htmlFilesArray)
-        .pipe(minifyHTML(opts))
-        .pipe(concat('template.html'))
-        .pipe(gulp.dest('./build'))
-        .pipe(connect.reload());
-});
+function prepareTemplates() {
+    return gulp.src('app/html/*.html')
+        //.pipe(minify and preprocess the template html here)
+        .pipe(angularTemplateCache());
+}
 
 
 gulp.task('css', function () {
@@ -57,9 +53,8 @@ gulp.task('watch', function () {
     gulp.watch('app/css/*.css', ['css']);
     gulp.watch('app/css/*/*.css', ['css']);
 
-    gulp.watch('app/html/*.html', ['html']);
-    gulp.watch('app/html/*/*.html', ['html']);
-    gulp.watch('app/html/_html-files-array.js', ['html']);
+    gulp.watch('app/html/*.html', ['js']);
+    gulp.watch('app/html/*/*.html', ['js']);
 
 });
 

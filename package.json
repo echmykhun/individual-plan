@@ -2,7 +2,9 @@
   "name": "application-name",
   "version": "0.0.1",
   "devDependencies": {
+    "add-stream": "^1.0.0",
     "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.6.0",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
@@ -12,7 +14,6 @@
   "dependencies": {
     "angular": "^1.4.1",
     "angular-route": "^1.4.1",
-    "gulp-minify-html": "^1.0.3",
     "normalize.css": "^3.0.3",
     "purecss": "^0.6.0"
   }
