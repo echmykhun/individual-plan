@@ -1,2 +1,31 @@
-<p>Введите общее кол-во часов <input type="number" ng-model="totalHours"></p>
-{{ message }}
+<p>Введите общее запланированное кол-во часов <input type="number" ng-model="Data.totalHoursPlan"></p>
+<p>Введите общее фактическое кол-во часов <input type="number" ng-model="Data.totalHoursFact"></p>
+<table class="pure-table pure-table-bordered" id="main-plan-table">
+    <thead>
+    <tr>
+        <th rowspan="2">№</th>
+        <th rowspan="2">Вид работы</th>
+        <th rowspan="1" colspan="2">Кол-во часов</th>
+    </tr>
+    <tr>
+        <th>По плану</th>
+        <th>Фактически</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(index, item) in Data.mainTableItems">
+        <td>{{ index }}</td>
+        <td>{{ item.title }}</td>
+        <td><input type="number" ng-model="item.hoursPlan"> ч</td>
+        <td><input type="number" ng-model="item.hoursFact"> ч</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="2">Всего</th>
+        <td>{{ realTotalPlan() }}</td>
+        <td>{{ realTotalFact() }}</td>
+    </tr>
+    </tfoot>
+
+</table>

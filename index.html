@@ -8,7 +8,10 @@
 </head>
 <body ng-app="mainApp">
 <div ng-controller="totalHoursDisplay">
-    <h2>Всего часов <span>{{ totalHours }}</span> ч</h2>
+    <h2>
+        Всего часов по плану <span>{{ Data.totalHoursPlan }}</span> ч
+        Всего часов по факту <span>{{ Data.totalHoursFact }}</span> ч
+    </h2>
     <p><a href="#main-table-plan">Main-table-plan</a></p>
 </div>
 <div ng-view></div>
